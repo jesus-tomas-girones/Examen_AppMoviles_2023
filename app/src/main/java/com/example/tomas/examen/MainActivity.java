@@ -135,4 +135,18 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {}
+
+    //APARTADO 10 Guardar estado
+    @Override
+    protected void onSaveInstanceState(Bundle estado) {
+        super.onSaveInstanceState(estado);
+        estado.putInt("contador", contador);
+    }
+    @Override
+    protected void onRestoreInstanceState(Bundle estado) {
+        super.onRestoreInstanceState(estado);
+        contador = estado.getInt("contador", 0);
+        Button b3 = findViewById(R.id.button3);
+        b3.setText("" + contador);
+    }
 }
