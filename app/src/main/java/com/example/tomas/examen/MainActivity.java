@@ -118,9 +118,19 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onPause();
     }
 
+    //APARTADO 9 Sensor2
+    double lecturaAnterior = 0;
+    int contador = 0;
     public void onSensorChanged(SensorEvent sensorEvent) {
         double lectura= sensorEvent.values[0];
         Log.d("SENSORES", "Magnetico en x: "+lectura);
+        //APARTADO 9 Sensor2
+        if (abs(lectura - lecturaAnterior) > 10) {
+            contador++;
+            Button b3 = findViewById(R.id.button3);
+            b3.setText("" + contador);
+        }
+        lecturaAnterior = lectura;
     }
 
     @Override
